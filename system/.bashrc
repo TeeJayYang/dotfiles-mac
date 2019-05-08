@@ -1,9 +1,8 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
-export TERMINAL="urxvt"
 source ~/git-completion.bash
 
-alias l='ls -B --color=auto'
-alias ls='ls --color=auto'
+alias l='ls -B'
+alias ls='ls -G'
 alias rm='rm -i'
 alias python='python3'
 parse_git_branch() {
@@ -30,6 +29,5 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 set -o vi
 
-[[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'

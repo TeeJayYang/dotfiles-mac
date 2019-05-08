@@ -1,0 +1,33 @@
+bin:
+  link: "~/.bin"
+
+git:
+  link: "~"
+
+ranger:
+  link: "~/.config/ranger"
+  dependencies:
+    - "ranger"
+    - "imagemagick"
+    - "w3m"
+    - "feh"
+
+system:
+  link: "~"
+
+vim:
+  link:
+    - minisnip: "~/.vim"
+    - after: "~/.vim"
+    - "*": "~"
+    - ".*": "~"
+  dependencies:
+    - "vim"
+    - "curl"
+    - "ctags"
+    - "pandoc"
+    - "python3"
+    - "python-pip"
+  postlink:
+    - "mkdir -p ~/.vim/undo"
+    - "mkdir -p ~/.vim/backup"
