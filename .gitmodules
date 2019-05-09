@@ -1,0 +1,3 @@
+[submodule "pecan"]
+	path = pecan
+	url = https://github.com/TeeJayYang/pecan
