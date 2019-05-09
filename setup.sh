@@ -1,7 +1,8 @@
 # !/usr/bin/env bash
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || { echo 'Could not install brew!' ; exit 1 }
-brew cask install iterm2
+# brew cask install iterm2
+brew cask install kitty 
 brew install python3
 
 # installing updated bash

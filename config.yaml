@@ -2,7 +2,9 @@ bin:
   link: "~/.bin"
 
 chunkwm:
-  prelink: "brew tap koekeishiya/formulae"
+  prelink: 
+    - "brew tap koekeishiya/formulae"
+  link: "~"
   dependencies:
     - "chunkwm"
     - "koekeishiya/formulae/skhd"
@@ -12,6 +14,11 @@ chunkwm:
 
 git:
   link: "~"
+
+kitty:
+  link: "~/.config/kitty"
+  dependencies:
+    - "kitty"
 
 ranger:
   link: "~/.config/ranger"
