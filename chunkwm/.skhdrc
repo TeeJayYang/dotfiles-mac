@@ -226,7 +226,7 @@ shift + alt - v : chunkc set bsp_split_mode vertical
 # alt - q : chunkc tiling::window --toggle fade
 
 # float / unfloat window and center on screen
-alt - space : chunkc tiling::window --toggle float;\
+shift + alt - space : chunkc tiling::window --toggle float;\
           chunkc tiling::window --grid-layout 4:4:1:1:2:2
 
 # toggle sticky

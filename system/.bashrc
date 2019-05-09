@@ -4,7 +4,7 @@ source ~/git-completion.bash
 alias l='ls -B'
 alias ls='ls -G'
 alias rm='rm -i'
-alias python='python3'
+alias p='python3'
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
