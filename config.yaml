@@ -1,6 +1,15 @@
 bin:
   link: "~/.bin"
 
+chunkwm:
+  prelink: "brew tap koekeishiya/formulae"
+  dependencies:
+    - "chunkwm"
+    - "koekeishiya/formulae/skhd"
+  postlink:
+    - "brew services start chunkwm"
+    - "brew services start skhd"
+
 git:
   link: "~"
 
