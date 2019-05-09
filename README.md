@@ -8,3 +8,6 @@ de/wm           ->  chunkwm w/ pecan
 editor          ->  vim
 file explorer   ->  ranger
 ```
+
+## Screenshot
+![](screenshots/dirty.png "Fake Dirty")

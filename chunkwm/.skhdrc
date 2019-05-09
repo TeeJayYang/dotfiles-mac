@@ -1,3 +1,4 @@
+#  log file located at /usr/local/var/log/skhd/skhd.err.log
 #  NOTE(koekeishiya): A list of all built-in modifier and literal keywords can
 #                     be found at https://github.com/koekeishiya/skhd/issues/1
 #
@@ -210,6 +211,10 @@ alt - f : chunkc tiling::window --toggle fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : chunkc tiling::window --toggle native-fullscreen
+
+# change splitting mode
+alt - v : chunkc set bsp_split_mode horizontal
+shift + alt - v : chunkc set bsp_split_mode vertical
 
 # toggle window parent zoom
 # alt - d : chunkc tiling::window --toggle parent
