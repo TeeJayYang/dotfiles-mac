@@ -11,11 +11,11 @@ hi SpellBad cterm=underline ctermfg=red
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
-set tabstop=2       " The width of a TAB
+set tabstop=4       " The width of a TAB
 
-set shiftwidth=2    " Indent width
+set shiftwidth=4    " Indent width
 
-set softtabstop=2  " Sets the number of columns for a TAB
+set softtabstop=4  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces 
 set autoindent
@@ -195,6 +195,9 @@ Plug 'sheerun/vim-polyglot'
 " color preview
 Plug 'chrisbra/Colorizer'
 
+" linting
+Plug 'w0rp/ale'
+
 call plug#end()
 
 " ===========================Plugins
@@ -292,11 +295,32 @@ command! MRU call fzf#run(fzf#wrap({
 "" Config for Polyglot
 let g:polyglot_disabled = ['latex']
 
-" Color
+"" Color
 let g:colorizer_syntax = 1
 let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
-" ====================Plugin Configs
 
+"" Ale
+let g:ale_linters = {
+      \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
+      \ 'java': [ 'javac' ],
+      \ 'javascript': [ 'eslint' ],
+      \ 'python': [ 'autopep', 'flake8', 'pylint' ],
+      \}
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_set_quickfix = 0
+let g:ale_sign_column_always = 1
+let g:ale_open_list = 0
+nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
+nmap <silent> <Tab> <Plug>(ale_next_wrap)
+nmap <leader>l :lop<CR>
+
+"" Clear the gutter color
+highlight clear SignColumn
+" ====================Plugin Configs
 
 " statusline========================
 highlight statusLineNC ctermfg=8 ctermbg=2
