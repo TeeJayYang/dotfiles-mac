@@ -35,7 +35,7 @@ chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 #       and automatically reload any '.so' file that is changed.
 #
 
-chunkc core::hotload 0
+chunkc core::hotload 1
 
 #
 # NOTE: the following are config variables for the chunkwm-tiling plugin.
@@ -96,7 +96,7 @@ chunkc set preselect_border_outline      0
 #       (https://github.com/koekeishiya/chwm-sa)
 #
 
-chunkc set window_float_topmost          0
+chunkc set window_float_topmost          1
 chunkc set window_fade_inactive          0
 chunkc set window_fade_alpha             0.85
 chunkc set window_fade_duration          0.25

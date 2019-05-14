@@ -7,7 +7,9 @@ set showcmd         " show commands while they are being typed
 set ignorecase      " case insensitive searching
 set background=dark " force dark background on terminal transparency
 hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=red
+hi SpellBad cterm=underline ctermfg=1
+hi clear SpellCap
+hi SpellCap cterm=underline ctermfg=4
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
