@@ -151,6 +151,7 @@ highlight VertSplit ctermbg=none
 
 " QoL things
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 
 " easy commenting
 Plug 'tpope/vim-commentary'
@@ -160,9 +161,6 @@ Plug 'tpope/vim-repeat'
 
 " text surrounding
 Plug 'tpope/vim-surround'
-
-" unix commands in vim
-Plug 'tpope/vim-eunuch'
 
 " indent char
 Plug 'yggdroot/indentline'
@@ -200,6 +198,9 @@ Plug 'chrisbra/Colorizer'
 " linting
 Plug 'w0rp/ale'
 
+" statusline
+Plug 'rbong/vim-crystalline'
+
 call plug#end()
 
 " ===========================Plugins
@@ -217,6 +218,8 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_matchpairs = '(:),[:],{:}'
 au FileType pandoc let b:delimitMate_quotes = "\" '"
 au FileType Markdown let b:delimitMate_quotes = "\" '"
+au FileType pandoc let b:delimitMate_nesting_quotes = ['`']
+au FileType Markdown let b:delimitMate_nesting_quotes = ['`'] 
 
 " config for vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
@@ -322,51 +325,27 @@ nmap <leader>l :lop<CR>
 
 "" Clear the gutter color
 highlight clear SignColumn
-" ====================Plugin Configs
 
-" statusline========================
-highlight statusLineNC ctermfg=8 ctermbg=2
-highlight statusLineDark ctermfg=12 ctermbg=0
-highlight statusLineLight ctermfg=15 ctermbg=10
-highlight statusLineAccent ctermfg=15 ctermbg=160
-set laststatus=2
-
-function! CurrentGitStatus()
-  let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
-  if len(gitoutput) > 0
-    let b:gitstatus = strpart(get(gitoutput,0,''),3) . '/' . strpart(get(gitoutput,1,'  '),0,2)
-  else
-    let b:gitstatus = ''
-  endif
-endfunc
-
-autocmd BufEnter,BufWritePost * call CurrentGitStatus()
-
-function! StatusLinePasteMode() abort
-	let l:paste_status = &paste
-	if l:paste_status == 1
-		return '[P]'
-	endif
-	return ''
+function! StatusLine(current)
+  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
+        \ . ' %f%h%w%m%r '
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+        \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
 endfunction
 
-set statusline=
-set statusline+=%#statusLineAccent#
-set statusline+=%{StatusLinePasteMode()}
-set statusline+=%#statusLineDark#
-set statusline+=\ %(<%{b:gitstatus}>%)
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#Black#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\
-" ========================statusline
+function! TabLine()
+  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'dracula'
+
+set showtabline=2
+set laststatus=2
+" ====================Plugin Configs
 
 " highlight if over the 90 char limit
 " highlight ColorColumn ctermbg=magenta
