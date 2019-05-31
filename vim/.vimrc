@@ -255,10 +255,11 @@ let g:pandoc#modules#disabled = ["folding"]
 noremap <leader>- :Pandoc pdf<CR>
 
 " config for Guentags
-" let g:gutentags_cache_dir = '~/.tags'
+let g:gutentags_cache_dir = '~/.tags'
+" let g:gutentags_trace = 1
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java -o -nam \*.py \)'
+let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s

@@ -70,6 +70,7 @@ npm-debug.log
 
 # ctags
 tags
+tags.lock
 
 # LaTeX compiler files
 *.aux
