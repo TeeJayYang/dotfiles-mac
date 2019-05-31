@@ -258,7 +258,7 @@ noremap <leader>- :Pandoc pdf<CR>
 " let g:gutentags_cache_dir = '~/.tags'
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java \)'
+let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java -o -nam \*.py \)'
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s
@@ -319,6 +319,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_open_list = 0
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
 nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
 nmap <silent> <Tab> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
