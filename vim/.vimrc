@@ -86,6 +86,11 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
+" Using Ag for global grep
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+nnoremap ? :Ag<SPACE>
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -101,8 +106,7 @@ inoremap <C-BS> <C-\><C-o>db
 
 set backspace=indent,eol,start
 
-" Remapping the command line window because
-" I'm a terrible typist
+" Remapping the command line window
 map q: :q
 
 " yanking moves cursor to end of yanked text

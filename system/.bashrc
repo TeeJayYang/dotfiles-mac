@@ -24,6 +24,7 @@ function ranger-cd {
 }
 alias r='ranger-cd'
 alias ranger='ranger-cd'
+alias ag='ag --path-to-ignore ~/.agignore'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
