@@ -325,8 +325,8 @@ let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_open_list = 0
 let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
-nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
-nmap <silent> <Tab> <Plug>(ale_next_wrap)
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
 
 "" Clear the gutter color

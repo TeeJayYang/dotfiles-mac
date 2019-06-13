@@ -12,6 +12,9 @@ chunkwm:
     - "brew services start chunkwm"
     - "brew services start skhd"
 
+flake8:
+  link: "~/.config"
+
 git:
   link: "~"
 
