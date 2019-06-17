@@ -1,7 +1,11 @@
 # !/usr/bin/env bash
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || { echo 'Could not install brew!' ; exit 1 }
-# brew cask install iterm2
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ $? -ne 0]; then
+    echo "Could not install Brew!"
+    exit 1
+fi
+brew cask install iterm2
 brew cask install kitty 
 brew install python3
 
