@@ -1,5 +1,5 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
-source ~/git-completion.bash
+source ~/.git-completion.bash
 
 alias l='ls -B'
 alias ls='ls -G'

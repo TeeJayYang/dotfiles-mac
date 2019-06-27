@@ -6,7 +6,7 @@ if [ $? -ne 0]; then
     exit 1
 fi
 brew cask install iterm2
-brew cask install kitty 
+brew cask install kitty
 brew install python3
 
 # installing updated bash
@@ -17,6 +17,12 @@ chsh -s $(brew --prefix)/bin/bash
 echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells > /dev/null
 
 
+# install pillow
+sudo easy_install pip
+sudo pip install pillow
+pip3 install pillow
+
+# install pillow
 # Copy the example configuration into your home directory:
 #   cp /usr/local/opt/chunkwm/share/chunkwm/examples/chunkwmrc ~/.chunkwmrc
 

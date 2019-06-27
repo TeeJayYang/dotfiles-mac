@@ -349,7 +349,8 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'dracula'
 
-set showtabline=2
+" set showtabline=2
+set guioptions-=e
 set laststatus=2
 " ====================Plugin Configs
 
@@ -371,3 +372,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Changing formatting option depending on file type
+autocmd FileType python setlocal equalprg=yapf

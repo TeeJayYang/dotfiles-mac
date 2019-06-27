@@ -19,9 +19,9 @@ git:
   link: "~"
 
 kitty:
+  prelink:
+    - "brew cask install kitty"
   link: "~/.config/kitty"
-  dependencies:
-    - "kitty"
 
 ranger:
   link: "~/.config/ranger"
