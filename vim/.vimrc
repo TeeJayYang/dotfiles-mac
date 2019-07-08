@@ -5,11 +5,14 @@ set linebreak       " only wrap at breaking characters
 set nolist          " list disables linebreak
 set showcmd         " show commands while they are being typed
 set ignorecase      " case insensitive searching
+set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
 hi SpellCap cterm=underline ctermfg=4
+hi IncSearch cterm=underline ctermfg=0 ctermbg=5
+hi link SearchLight IncSearch
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
@@ -19,7 +22,7 @@ set shiftwidth=4    " Indent width
 
 set softtabstop=4  " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces 
+set expandtab       " Expand TABs to spaces
 set autoindent
 
 set undofile        " Persistent undo
@@ -147,6 +150,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'dylanaraps/wal.vim'
 " colorscheme wal
 
+" Regular colorscheme
+Plug 'joshdick/onedark.vim'
+
 "" Highlighting for transparent background
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
@@ -184,6 +190,9 @@ Plug 'ludovicchabant/vim-gutentags'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" highlighting for current search
+Plug 'peterrincker/vim-searchlight'
 
 " ============= Document Writing ============
 "
@@ -223,13 +232,24 @@ let g:delimitMate_matchpairs = '(:),[:],{:}'
 au FileType pandoc let b:delimitMate_quotes = "\" '"
 au FileType Markdown let b:delimitMate_quotes = "\" '"
 au FileType pandoc let b:delimitMate_nesting_quotes = ['`']
-au FileType Markdown let b:delimitMate_nesting_quotes = ['`'] 
+au FileType Markdown let b:delimitMate_nesting_quotes = ['`']
 
 " config for vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
 " let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+let g:vimtex_quickfix_open_on_warning = 0
+nmap <leader>q :copen<CR>
 
 " config for vim-pencil
 let g:pencil#textwidth = 150
@@ -347,11 +367,15 @@ endfunction
 
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'dracula'
+let g:crystalline_theme = 'onedark'
 
 " set showtabline=2
 set guioptions-=e
 set laststatus=2
+
+"" Colorscheme config
+let g:onedark_termcolors=16
+colorscheme onedark
 " ====================Plugin Configs
 
 " highlight if over the 90 char limit
