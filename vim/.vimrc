@@ -87,7 +87,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " use ag for vim grep
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ -g
+  set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag for FZF
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
